@@ -86,80 +86,28 @@ Read correct lesson meta from esciencecenter-digital-skills/workshop-metadata
 {% capture lesson_meta %}https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/{{info.curriculum}}{% endcapture %}
 {% endif %}
 
-{% comment %}
-Check DC curriculum
-{% endcomment %}
-
-{% if info.carpentry == "dc" %}
-{% unless info.curriculum == "dc-astronomy" or info.curriculum == "dc-ecology" or info.curriculum == "dc-genomics" or info.curriculum == "dc-socsci" or info.curriculum == "dc-image-processing" %}
-<div class="alert alert-warning">
-It looks like you are setting up a website for a Data Carpentry curriculum but you haven't specified the curriculum type in the <code>_data/data.csv</code> file (current value in <code>_data/data.csv</code>: "<strong>{{ info.curriculum }}</strong>", possible values: <code>dc-astronomy</code>, <code>dc-ecology</code>, <code>dc-genomics</code>, <code>dc-socsci</code>, or <code>dc-geospatial</code>). After editing this file, you need to run <code>make serve</code> again to see the changes reflected.
-</div>
-{% endunless %}
-{% endif %}
-{% comment %}
-Check SWC curriculum
-{% endcomment %}
-
-{% if info.carpentry == "swc" %}
-{% unless info.curriculum == "swc-inflammation" or info.curriculum == "swc-gapminder" %}
-<div class="alert alert-warning">
-It looks like you are setting up a website for a Software Carpentry curriculum but you haven't specified the curriculum type in the <code>_data/data.csv</code> file (current value in <code>_data/data.csv</code>: "<strong>{{ info.curriculum }}</strong>", possible values: <code>swc-inflammation</code>, or <code>swc-gapminder</code>). After editing this file, you need to run <code>make serve</code> again to see the changes reflected.
-</div>
-{% endunless %}
-{% endif %}
-
-{% comment %}
-Check DS curriculum
-{% endcomment %}
-
-{% if info.carpentry == "ds" %}
-{% unless info.curriculum == "ds-cr" or info.curriculum == "ds-docker" or info.curriculum == "ds-dl-intro" or info.curriculum == "ds-gpu" or info.curriculum == "ds-parallel" or info.curriculum == "ds-rpackaging" or info.curriculum == "ds-geospatial"%}
-<div class="alert alert-warning">
-It looks like you are setting up a website for a Digital Skills curriculum but you haven't specified the curriculum type in the <code>_data/data.csv</code> file (current value in <code>_data/data.csv</code>: "<strong>{{ info.curriculum }}</strong>", possible values: <code>ds-cr</code>, <code>ds-docker</code>, <code>ds-dl-intro</code>, <code>ds-gpu</code>, <code>ds-parallel</code> or <code>ds-rpackaging</code>). After editing this file, you need to run <code>make serve</code> again to see the changes reflected.
-</div>
-{% endunless %}
-{% endif %}
-
-{% comment %}
-EVENTBRITE
-
-This block includes the Eventbrite registration widget if
-'eventbrite' has been set in the header.  You can delete it if you
-are not using Eventbrite, or leave it in, since it will not be
-displayed if the 'eventbrite' field in the header is not set.
-{% endcomment %}
-{% if eventbrite %}
-<strong>Some adblockers block the registration window. If you do not see the
-  registration box below, please check your adblocker settings.</strong>
-<iframe
-  src="https://www.eventbrite.com/tickets-external?eid={{eventbrite}}&ref=etckt"
-  frameborder="0"
-  width="100%"
-  height="280px"
-  scrolling="auto">
-</iframe>
-{% endif %}
-
 
 <h2 id="general">General Information</h2>
 
-{% comment %}
-INTRODUCTION
+The eScience Center offers a range of free workshops and training courses, open to all researchers affiliated with Dutch research organizations. We organize workshops covering digital skills needed to put reproducible research into practice. These include online collaboration, reproducible code and good programming practices. We also offer more advanced workshops such as GPU Programming, Parallel Programming and Deep Learning.
 
-Edit the general explanatory paragraph below if you want to change
-the pitch.
-{% endcomment %}
-{% if info.carpentry == "swc" %}
-{% include swc/intro.html %}
-{% elsif info.carpentry == "dc" %}
-{% include dc/intro.html %}
-{% elsif info.carpentry == "lc" %}
-{% include lc/intro.html %}
-{% elsif info.carpentry == "ds" %}
-{% include ds/intro.md %}
-{% remote_include {{lesson_meta}}/description.md %}
-{% endif %}
+This hands-on workshop will provide you with the basics of machine learning using Python.
+
+Machine learning is the field devoted to methods and algorithms that ‘learn’ from data. It can be applied to a vast range of different domains, from linguistics to physics and from medical imaging to history.
+
+This workshop covers the basics of machine learning in a practical and hands-on manner, so that upon completion, you will be able to train your first machine learning models and understand what next steps to take to improve them.
+
+
+We start with data exploration so that it is suitable for machine learning. Then we learn how to train a model on the data using scikit-learn. 
+On the second day we will put these skills to practice on the LISS dataset. 
+We will focus on a central machine learning task: fertility prediction.
+Using this dataset you will learn how to select the best model from the trained models and how to use different machine learning models (like linear regression, logistic regression, decision tree and support vector machine)
+and discuss some of the best practices when starting your own machine learning project.
+
+The workshop will NOT cover the following topics:
+
+* math and theory on machine learning
+* deep learning models
 
 {% comment %}
 AUDIENCE
@@ -406,29 +354,72 @@ of code below the Schedule `<h2>` header below with
 `{% include custom-schedule.html %}`.
 {% endcomment %}
 
-{% if info.carpentry == "ds" %}
 <h2 id="syllabus">Syllabus</h2>
-{% remote_include {{lesson_meta}}/syllabus.md %}
-{% endif %}
+
+Machine learning concepts
+* What is machine learning?
+* Different types of machine learning
+* Big picture of machine learning models
+* General pipeline
+
+The predictive modeling pipeline
+
+* Tabular data exploration
+* Fitting a scikit-learn model on numerical data
+* Handling categorical data
+
+Fertility prediction using LISS data
+* Selecting the best model
+* Improving the model
+* Best practices in machine learning
+* Feature selection
+* Dealing with class imbalance
+* Feature importance
 
 <h2 id="schedule">Schedule</h2>
-
-{% if info.carpentry == "swc" %}
-{% include swc/schedule.html %}
-{% elsif info.carpentry == "dc" %}
-{% include dc/schedule.html %}
-{% elsif info.carpentry == "lc" %}
-{% include lc/schedule.html %}
-{% elsif info.carpentry == "ds" %}
-{% remote_include {{lesson_meta}}/schedule.md %}
-{% elsif info.carpentry == "pilot" %}
-The lesson taught in this workshop is being piloted and a precise schedule is yet to be established. The workshop will include regular breaks. If you would like to know the timing of these breaks in advance, please [contact the workshop organisers](#contact). For a list of lesson sections and estimated timings, [visit the lesson homepage]({{ site.lesson_site }}).
-{% comment %}
-Edit/replace the text above if you want to include a schedule table.
-See the contents of the _includes/custom-schedule.html file for an example of
-how one of these schedule tables is constructed.
-{% endcomment %}
-{% endif %}
+<div class="row">
+  <div class="col-md-6">
+    <h3>Day 1</h3>
+    <table class="table table-striped">
+      <tr> <th>local Rotterdam time</th> <th>what</th></tr>
+      <tr> <td>09:30</td>  <td>Welcome and icebreaker</td> </tr>
+      <tr> <td>09:45</td>  <td>Introduction to Machine Learning</td></tr>
+      <tr> <td>10:30</td>  <td>Break</td></tr>
+      <tr> <td>10:40</td>  <td>Predictive modeling pipeline: data exploration </td> </tr>
+      <tr> <td>11:30</td>  <td>Break</td></tr>
+      <tr> <td>11:40</td>  <td>Predictive modeling pipeline: Fitting a scikit-learn model on numerical data</td> </tr>
+      <tr> <td>12:30</td>  <td>Lunch Break</td></tr>
+      <tr> <td>13:30</td>  <td>Predictive modeling pipeline: Fitting a scikit-learn model on numerical data</td> </tr>
+      <tr> <td>14:30</td>  <td>Break</td></tr>
+      <tr> <td>14:40</td>  <td>Predictive modeling pipeline: Handling categorical data</td> </tr>
+      <tr> <td>15:30</td>  <td>Break</td></tr>
+      <tr> <td>15:40</td>  <td>Predictive modeling pipeline: Handling categorical data</td> </tr>
+      <tr> <td>16:15</td>  <td>Wrap-up</td> </tr>
+      <tr> <td>16:30</td>  <td>END</td> </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h3>Day 2</h3>
+    <table class="table table-striped">
+      <tr> <th>local Rotterdam time</th> <th>what</th></tr>
+      <tr> <td>09:30</td>  <td>Welcome and recap</td> </tr>
+      <tr> <td>09:45</td>  <td>Fertility prediciton using LISS data</td></tr>
+      <tr> <td>10:30</td>  <td>Break</td></tr>
+      <tr> <td>10:40</td>  <td>Fertility prediciton using LISS data</td> </tr>
+      <tr> <td>11:30</td>  <td>Break</td></tr>
+      <tr> <td>11:40</td>  <td>Fertility prediciton using LISS data</td></tr>
+      <tr> <td>12:30</td>  <td>Lunch Break</td></tr>
+      <tr> <td>13:30</td>  <td>Feature importance intermezzo</td></tr>
+      <tr> <td>14:30</td>  <td>Break</td></tr>
+      <tr> <td>14:40</td>  <td>Fertility prediciton using LISS data</td> </tr>
+      <tr> <td>15:30</td>  <td>Break</td></tr>
+      <tr> <td>15:40</td>  <td>Fertility prediciton using LISS data</td> </tr>
+      <tr> <td>16:00</td>  <td>Submit results to benchmark</td> </tr>
+      <tr> <td>16:15</td>  <td>Post-workshop Survey</td> </tr>
+      <tr> <td>16:30</td>  <td>Drinks</td> </tr>
+    </table>
+  </div>
+</div>
 
 <hr/>
 
