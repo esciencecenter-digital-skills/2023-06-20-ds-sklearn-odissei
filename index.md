@@ -395,7 +395,7 @@ Fertility prediction using LISS data
       <tr> <td>15:00</td>  <td>Break</td></tr>
       <tr> <td>15:10</td>  <td>Predictive modeling pipeline: Handling categorical data</td> </tr>
       <tr> <td>15:45</td>  <td>Wrap-up</td> </tr>
-      <tr> <td>16:30</td>  <td>END</td> </tr>
+      <tr> <td>16:00</td>  <td>END</td> </tr>
     </table>
   </div>
   <div class="col-md-6">
@@ -414,9 +414,9 @@ Fertility prediction using LISS data
       <tr> <td>14:10</td>  <td>Fertility prediciton using LISS data</td> </tr>
       <tr> <td>15:00</td>  <td>Break</td></tr>
       <tr> <td>15:10</td>  <td>Fertility prediciton using LISS data</td> </tr>
-      <tr> <td>16:00</td>  <td>Submit results to benchmark</td> </tr>
-      <tr> <td>16:15</td>  <td>Post-workshop Survey</td> </tr>
-      <tr> <td>16:30</td>  <td>Drinks</td> </tr>
+      <tr> <td>15:30</td>  <td>Submit results to benchmark</td> </tr>
+      <tr> <td>15:45</td>  <td>Post-workshop Survey</td> </tr>
+      <tr> <td>16:00</td>  <td>Drinks</td> </tr>
     </table>
   </div>
 </div>
