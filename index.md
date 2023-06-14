@@ -394,6 +394,7 @@ Fertility prediction using LISS data
       <tr> <td>14:10</td>  <td>Predictive modeling pipeline: Handling categorical data</td> </tr>
       <tr> <td>15:00</td>  <td>Break</td></tr>
       <tr> <td>15:10</td>  <td>Predictive modeling pipeline: Handling categorical data</td> </tr>
+      <tr> <td>15:35</td>  <td>Introduction to LISS data</td> </tr>
       <tr> <td>15:45</td>  <td>Wrap-up</td> </tr>
       <tr> <td>16:00</td>  <td>END</td> </tr>
     </table>
